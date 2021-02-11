@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sockets</title>
+</head>
+
+<body>
+  <button id="btn">Send</button>
+  <script>
+    window.onload = () => {
+      console.log('Loaded');
+      const btn = document.querySelector('#btn');
+    }
+
+    const s = new WebSocket('ws://localhost:5000')
+
+    s.onmessage = function (e) {
+      console.log("message:", e);
+    }
+
+    s.onopen = function (e) {
+      console.log("open:", e);
+    }
+
+    s.onerror = function (e) {
+      console.log("error:", e);
+    }
+
+    s.onclose = function (e) {
+      console.log("close:", e);
+    }
+
+    btn.addEventListener('click', (e) => {
+      console.log('clicked');
+      s.send("Hello from client")
+    })
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,6 @@
+pip install:
+tensorflow
+opencv-python
+pillow
+scipy
+pyftpdlib
